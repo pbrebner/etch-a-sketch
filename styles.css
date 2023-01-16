@@ -1,3 +1,22 @@
 /*Stylesheet for Etch-a-Sketch*/
 
+/*Using Flexbox
+.gridContainer {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 850px;
+}*/
+
+/*Using Grid*/
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(16, 50px);
+}
+
+
+.gridBox {
+    border: 1px solid black;
+    padding: 0.8rem;
+}
+
 
