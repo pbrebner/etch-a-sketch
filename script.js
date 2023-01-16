@@ -10,3 +10,12 @@ for (i = 1; i <= 256; i++) {
     gridBox.innerHTML = "box";
     gridContainer.appendChild(gridBox);
 }
+
+
+const gridBoxes = document.querySelectorAll('.gridBox');
+
+gridBoxes.forEach((item) => {
+    item.addEventListener('mouseover', function (e) {
+        e.target.style.background = 'grey';
+    });
+})
