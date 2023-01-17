@@ -1,22 +1,27 @@
 /*Stylesheet for Etch-a-Sketch*/
 
-/*Using Flexbox
+.gridSizeBtn {
+    margin-bottom: 1.5rem;
+}
+
+/*Using Flexbox*/
 .gridContainer {
     display: flex;
     flex-wrap: wrap;
-    max-width: 850px;
-}*/
+    max-width: 960px;
+}
 
-/*Using Grid*/
+/*Using Grid
 .gridContainer {
     display: grid;
     grid-template-columns: repeat(16, 50px);
-}
+}*/
 
 
 .gridBox {
     border: 1px solid black;
-    padding: 0.8rem;
+    width: 58px;
+    height:58px;
 }
 
 
