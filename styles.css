@@ -8,7 +8,7 @@
 .gridContainer {
     display: flex;
     flex-wrap: wrap;
-    max-width: 960px;
+    width: 960px;
 }
 
 /*Using Grid
@@ -20,6 +20,7 @@
 
 .gridBox {
     border: 1px solid black;
+    background-color: rgb(255,255,255);
     width: 58px;
     height:58px;
 }
