@@ -16,7 +16,9 @@ const gridBoxes = document.querySelectorAll('.gridBox');
 
 gridBoxes.forEach((item) => {
     item.addEventListener('mouseover', function (e) {
-        e.target.style.background = 'grey';
+        //e.target.style.background = 'rgb(128,128,128)';
+        //e.target.style.background = randomColor()
+        e.target.style.background = incrementBlack(e.target.style.background)
     });
 })
 
@@ -52,7 +54,28 @@ gridSizeBtn.addEventListener('click', () => {
 
     gridBoxes.forEach((item) => {
         item.addEventListener('mouseover', function (e) {
-            e.target.style.background = 'grey';
+            //e.target.style.background = 'rgb(128,128,128)';
+            //e.target.style.background = randomColor()
+            e.target.style.background = incrementBlack(e.target.style.background)
         });
     })
 })
+
+function randomColor () {
+    let x = Math.floor(Math.random() * 256);
+    let y = Math.floor(Math.random() * 256);
+    let z = Math.floor(Math.random() * 256);
+
+    let rgbColor = 'rgb(' + x + ',' + y + ',' + z + ')';
+    return rgbColor
+}
+
+function incrementBlack (currentColor) {
+    let currentColorValue = currentColor.slice(4,currentColor.indexOf(','));
+    if (currentColorValue == '') {
+        currentColorValue = '255';
+    }
+
+    let newColorValue = Math.max(Number(currentColorValue) - 25, 0);
+    return 'rgb(' + newColorValue + ',' + newColorValue + ',' + newColorValue + ')';
+}
