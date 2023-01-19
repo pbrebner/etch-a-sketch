@@ -79,3 +79,79 @@ function incrementBlack (currentColor) {
     let newColorValue = Math.max(Number(currentColorValue) - 25, 0);
     return 'rgb(' + newColorValue + ',' + newColorValue + ',' + newColorValue + ')';
 }
+
+
+// Mode Buttons
+
+const standardModeBtn = document.querySelector('.standardModeBtn')
+const colorModeBtn = document.querySelector('.colorModeBtn')
+const advancedModeBtn = document.querySelector('.advancedModeBtn')
+
+advancedModeBtn.addEventListener('click', () => {
+
+    const gridSize = Math.sqrt(document.querySelectorAll('.gridBox').length);
+
+    gridContainer.innerHTML = '';
+
+    for (i = 1; i <= (gridSize * gridSize); i++) {
+        const gridBox = document.createElement('div');
+        gridBox.setAttribute('class', 'gridBox');
+        gridBox.style.width = `${960/gridSize -2}px`;
+        gridBox.style.height = `${960/gridSize -2}px`;
+        gridContainer.appendChild(gridBox);
+    }
+
+    const gridBoxes = document.querySelectorAll('.gridBox');
+
+    gridBoxes.forEach((box) => {
+        box.addEventListener('mouseover', function(e) {
+            e.target.style.background = incrementBlack(e.target.style.background);
+        })
+    })
+})
+
+colorModeBtn.addEventListener('click', () => {
+
+    const gridSize = Math.sqrt(document.querySelectorAll('.gridBox').length);
+
+    gridContainer.innerHTML = '';
+
+    for (i = 1; i <= (gridSize * gridSize); i++) {
+        const gridBox = document.createElement('div');
+        gridBox.setAttribute('class', 'gridBox');
+        gridBox.style.width = `${960/gridSize -2}px`;
+        gridBox.style.height = `${960/gridSize -2}px`;
+        gridContainer.appendChild(gridBox);
+    }
+
+    const gridBoxes = document.querySelectorAll('.gridBox');
+
+    gridBoxes.forEach((box) => {
+        box.addEventListener('mouseover', function(e) {
+            e.target.style.background = randomColor();
+        })
+    })
+})
+
+standardModeBtn.addEventListener('click', () => {
+
+    const gridSize = Math.sqrt(document.querySelectorAll('.gridBox').length);
+
+    gridContainer.innerHTML = '';
+
+    for (i = 1; i <= (gridSize * gridSize); i++) {
+        const gridBox = document.createElement('div');
+        gridBox.setAttribute('class', 'gridBox');
+        gridBox.style.width = `${960/gridSize -2}px`;
+        gridBox.style.height = `${960/gridSize -2}px`;
+        gridContainer.appendChild(gridBox);
+    }
+
+    const gridBoxes = document.querySelectorAll('.gridBox');
+
+    gridBoxes.forEach((box) => {
+        box.addEventListener('mouseover', function(e) {
+            e.target.style.background = 'rgb(128,128,128)';
+        })
+    })
+})
