@@ -1,29 +1,21 @@
 // Javascript for Etch-a-Sketch
 
-const gridContainer = document.querySelector('.gridContainer')
-
 // Create 16x16 grid (default size) of divs and place in the gridContainer
 const defaultGridSize = 16;
+const defaultMode = 'Standard'
 
-for (i = 1; i <= defaultGridSize * defaultGridSize; i++) {
-    const gridBox = document.createElement('div');
-    gridBox.setAttribute('class', 'gridBox');
-    gridContainer.appendChild(gridBox);
-}
-
-//Hover Event
-const gridBoxes = document.querySelectorAll('.gridBox');
-
-gridBoxes.forEach((item) => {
-    item.addEventListener('mouseover', function (e) {
-        //e.target.style.background = 'rgb(128,128,128)';
-        //e.target.style.background = randomColor()
-        e.target.style.background = incrementBlack(e.target.style.background)
-    });
-})
+buildNewGrid(defaultGridSize)
+setFillMethod(defaultMode)
 
 //Button to adjust grid size
 const gridSizeBtn = document.querySelector('.gridSizeBtn')
+
+//Button to adjust mode
+const standardModeBtn = document.querySelector('.standardModeBtn')
+const colorModeBtn = document.querySelector('.colorModeBtn')
+const advancedModeBtn = document.querySelector('.advancedModeBtn')
+
+standardModeBtn.classList.add('selectedBtn');
 
 gridSizeBtn.addEventListener('click', () => {
     let gridSize = Number(window.prompt('What size of grid do you want? (Min 2, Max 100)', 16));
@@ -40,25 +32,10 @@ gridSizeBtn.addEventListener('click', () => {
         else break
     }
 
-    gridContainer.innerHTML = '';
+    const mode = document.querySelector('.selectedBtn').innerHTML;
 
-    for (i = 1; i <= (gridSize * gridSize); i++) {
-        const gridBox = document.createElement('div');
-        gridBox.setAttribute('class', 'gridBox');
-        gridBox.style.width = `${960/gridSize -2}px`;
-        gridBox.style.height = `${960/gridSize -2}px`;
-        gridContainer.appendChild(gridBox);
-    }
-
-    const gridBoxes = document.querySelectorAll('.gridBox');
-
-    gridBoxes.forEach((item) => {
-        item.addEventListener('mouseover', function (e) {
-            //e.target.style.background = 'rgb(128,128,128)';
-            //e.target.style.background = randomColor()
-            e.target.style.background = incrementBlack(e.target.style.background)
-        });
-    })
+    buildNewGrid(gridSize)
+    setFillMethod(mode)
 })
 
 function randomColor () {
@@ -80,78 +57,71 @@ function incrementBlack (currentColor) {
     return 'rgb(' + newColorValue + ',' + newColorValue + ',' + newColorValue + ')';
 }
 
-
-// Mode Buttons
-
-const standardModeBtn = document.querySelector('.standardModeBtn')
-const colorModeBtn = document.querySelector('.colorModeBtn')
-const advancedModeBtn = document.querySelector('.advancedModeBtn')
-
-advancedModeBtn.addEventListener('click', () => {
-
-    const gridSize = Math.sqrt(document.querySelectorAll('.gridBox').length);
+function buildNewGrid (gridSize) {
+    const gridContainer = document.querySelector('.gridContainer');
 
     gridContainer.innerHTML = '';
 
     for (i = 1; i <= (gridSize * gridSize); i++) {
         const gridBox = document.createElement('div');
         gridBox.setAttribute('class', 'gridBox');
-        gridBox.style.width = `${960/gridSize -2}px`;
-        gridBox.style.height = `${960/gridSize -2}px`;
+        gridBox.style.width = `${960/gridSize - 2}px`;
+        gridBox.style.height = `${960/gridSize - 2}px`;
         gridContainer.appendChild(gridBox);
     }
+}
 
+function setFillMethod (mode) {
     const gridBoxes = document.querySelectorAll('.gridBox');
 
-    gridBoxes.forEach((box) => {
-        box.addEventListener('mouseover', function(e) {
-            e.target.style.background = incrementBlack(e.target.style.background);
-        })
+    gridBoxes.forEach((item) => {
+        item.addEventListener('mouseover', function (e) {
+            if (mode == 'Standard') {
+                e.target.style.background = 'rgb(0,0,0)';
+            }
+            else if (mode == 'Multi-Color') {
+                e.target.style.background = randomColor()
+            }
+            else {
+                e.target.style.background = incrementBlack(e.target.style.background)
+            }
+        });
     })
+}
+
+
+advancedModeBtn.addEventListener('click', () => {
+    advancedModeBtn.classList.add('selectedBtn');
+    colorModeBtn.classList.remove('selectedBtn');
+    standardModeBtn.classList.remove('selectedBtn');
+
+    const gridSize = Math.sqrt(document.querySelectorAll('.gridBox').length);
+    const mode = document.querySelector('.selectedBtn').innerHTML;
+
+    buildNewGrid(gridSize)
+    setFillMethod(mode)
 })
 
 colorModeBtn.addEventListener('click', () => {
+    advancedModeBtn.classList.remove('selectedBtn');
+    colorModeBtn.classList.add('selectedBtn');
+    standardModeBtn.classList.remove('selectedBtn');
 
     const gridSize = Math.sqrt(document.querySelectorAll('.gridBox').length);
+    const mode = document.querySelector('.selectedBtn').innerHTML;
 
-    gridContainer.innerHTML = '';
-
-    for (i = 1; i <= (gridSize * gridSize); i++) {
-        const gridBox = document.createElement('div');
-        gridBox.setAttribute('class', 'gridBox');
-        gridBox.style.width = `${960/gridSize -2}px`;
-        gridBox.style.height = `${960/gridSize -2}px`;
-        gridContainer.appendChild(gridBox);
-    }
-
-    const gridBoxes = document.querySelectorAll('.gridBox');
-
-    gridBoxes.forEach((box) => {
-        box.addEventListener('mouseover', function(e) {
-            e.target.style.background = randomColor();
-        })
-    })
+    buildNewGrid(gridSize)
+    setFillMethod(mode)
 })
 
 standardModeBtn.addEventListener('click', () => {
+    advancedModeBtn.classList.remove('selectedBtn');
+    colorModeBtn.classList.remove('selectedBtn');
+    standardModeBtn.classList.add('selectedBtn');
 
     const gridSize = Math.sqrt(document.querySelectorAll('.gridBox').length);
-
-    gridContainer.innerHTML = '';
-
-    for (i = 1; i <= (gridSize * gridSize); i++) {
-        const gridBox = document.createElement('div');
-        gridBox.setAttribute('class', 'gridBox');
-        gridBox.style.width = `${960/gridSize -2}px`;
-        gridBox.style.height = `${960/gridSize -2}px`;
-        gridContainer.appendChild(gridBox);
-    }
-
-    const gridBoxes = document.querySelectorAll('.gridBox');
-
-    gridBoxes.forEach((box) => {
-        box.addEventListener('mouseover', function(e) {
-            e.target.style.background = 'rgb(128,128,128)';
-        })
-    })
+    const mode = document.querySelector('.selectedBtn').innerHTML;
+    
+    buildNewGrid(gridSize)
+    setFillMethod(mode)
 })
