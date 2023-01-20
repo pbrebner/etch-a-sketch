@@ -1,7 +1,8 @@
 /*Stylesheet for Etch-a-Sketch*/
 
-.gridSizeBtn {
+.gridSizeBtn, .resetBtn {
     margin-bottom: 1.5rem;
+    margin-right: 1rem;
     font-size: 1rem;
 }
 

@@ -7,10 +7,11 @@ const defaultMode = 'Standard'
 buildNewGrid(defaultGridSize)
 setFillMethod(defaultMode)
 
-//Button to adjust grid size
-const gridSizeBtn = document.querySelector('.gridSizeBtn')
+//Buttons to adjust grid size and reset
+const gridSizeBtn = document.querySelector('.gridSizeBtn');
+const resetBtn = document.querySelector('.resetBtn');
 
-//Button to adjust mode
+//Buttons to adjust mode
 const standardModeBtn = document.querySelector('.standardModeBtn')
 const colorModeBtn = document.querySelector('.colorModeBtn')
 const advancedModeBtn = document.querySelector('.advancedModeBtn')
@@ -32,6 +33,14 @@ gridSizeBtn.addEventListener('click', () => {
         else break
     }
 
+    const mode = document.querySelector('.selectedBtn').innerHTML;
+
+    buildNewGrid(gridSize)
+    setFillMethod(mode)
+})
+
+resetBtn.addEventListener('click', () => {
+    const gridSize = Math.sqrt(document.querySelectorAll('.gridBox').length);
     const mode = document.querySelector('.selectedBtn').innerHTML;
 
     buildNewGrid(gridSize)
@@ -121,7 +130,7 @@ standardModeBtn.addEventListener('click', () => {
 
     const gridSize = Math.sqrt(document.querySelectorAll('.gridBox').length);
     const mode = document.querySelector('.selectedBtn').innerHTML;
-    
+
     buildNewGrid(gridSize)
     setFillMethod(mode)
 })
