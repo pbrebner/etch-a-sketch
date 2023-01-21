@@ -74,8 +74,8 @@ function buildNewGrid (gridSize) {
     for (i = 1; i <= (gridSize * gridSize); i++) {
         const gridBox = document.createElement('div');
         gridBox.setAttribute('class', 'gridBox');
-        gridBox.style.width = `${960/gridSize - 2}px`;
-        gridBox.style.height = `${960/gridSize - 2}px`;
+        gridBox.style.width = `${800/gridSize - 2}px`;
+        gridBox.style.height = `${800/gridSize - 2}px`;
         gridContainer.appendChild(gridBox);
     }
 }
