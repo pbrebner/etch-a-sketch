@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Etch-a-Sketch</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Etch-a-Sketch</title>
+        <link rel="stylesheet" href="styles.css" />
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <div class="main">
+            <h1 class="title">Etch-a-Sketch</h1>
 
-    <div class="main">
-        <h1 class="title">Etch-a-Sketch</h1>
+            <div class="controls">
+                <button class="gridSizeBtn Btn">Size of grid</button>
+                <button class="resetBtn Btn">Reset</button>
+            </div>
 
-        <div class="controls">
-            <button class="gridSizeBtn">Size of grid</button>
-            <button class="resetBtn">Reset</button>
+            <div class="gridContainer"></div>
+
+            <div class="mode">
+                <button class="standardModeBtn Btn">Standard</button>
+                <button class="colorModeBtn Btn">Multi-Color</button>
+                <button class="advancedModeBtn Btn">Advanced</button>
+            </div>
         </div>
 
-        <div class="gridContainer"></div>
-
-        <div class="mode">
-            <button class="standardModeBtn">Standard</button>
-            <button class="colorModeBtn">Multi-Color</button>
-            <button class="advancedModeBtn">Advanced</button>
+        <div class="footer">
+            <p>Developed by Patrick Brebner</p>
         </div>
-    </div>
-
-    <div class="footer">
-        <p>Copyright &copy; Patrick Brebner 2022</p>
-    </div>
-</body>
+    </body>
 </html>
