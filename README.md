@@ -1,6 +1,6 @@
 # Etch-a-Sketch
 
-[Image](UI.png)
+![Image](UI.png)
 
 ## About
 
